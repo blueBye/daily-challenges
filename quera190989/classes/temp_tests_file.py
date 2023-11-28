@@ -5,12 +5,22 @@ from classes.serializers import ClassroomSerializer
 
 class SerializerTest(TestCase):
     # tests
-    def test_valid_data(self):
+    def test_valid_data1(self):
         data = {
             'capacity': 5,  # Minimum allowed capacity
             'name': 'Room1',
             'department': 'main',
-            'area': 10.5,  # A positive number
+            'area': 10,  # A positive number
+        }
+        serializer = ClassroomSerializer(data=data)
+        self.assertTrue(serializer.is_valid())
+
+    def test_valid_data2(self):
+        data = {
+            'capacity': 5,  # Minimum allowed capacity
+            'name': 'Room1',
+            'department': 'main',
+            'area': 0, 
         }
         serializer = ClassroomSerializer(data=data)
         self.assertTrue(serializer.is_valid())
@@ -25,12 +35,22 @@ class SerializerTest(TestCase):
         serializer = ClassroomSerializer(data=data)
         self.assertFalse(serializer.is_valid())
 
-    def test_invalid_area(self):
+    def test_invalid_area1(self):
         data = {
             'capacity': 20,  # Valid capacity
             'name': 'Room3',
             'department': 'store',
             'area': -0.015,  # A negative number
+        }
+        serializer = ClassroomSerializer(data=data)
+        self.assertFalse(serializer.is_valid())
+
+    def test_invalid_area2(self):
+        data = {
+            'capacity': 20,  # Valid capacity
+            'name': 'Room3',
+            'department': 'store',
+            'area': 10.15,  # positive but with floating point
         }
         serializer = ClassroomSerializer(data=data)
         self.assertFalse(serializer.is_valid())
