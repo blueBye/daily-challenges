@@ -1,0 +1,72 @@
+version: '3'
+services:
+  loadbalancer:
+    image: registry.gitlab.com/qio/standard/haproxy:2.5-alpine
+    ports:
+      - 80:80
+    volumes: 
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+  server1:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server1
+      - STATUS=200
+    hostname: server1
+    ports:
+      - 7001:5000
+  server2:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server2
+      - STATUS=200
+    hostname: server2
+    ports:
+      - 7002:5000
+  server3:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server3
+      - STATUS=200
+    hostname: server3
+    ports:
+      - 7003:5000
+  server4:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server4
+      - STATUS=200
+    hostname: server4
+    ports:
+      - 7004:5000
+  server5:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server5
+      - STATUS=200
+    hostname: server5
+    ports:
+      - 7005:5000
+  server6:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server6
+      - STATUS=200
+    hostname: server6
+    ports:
+      - 7006:5000
+  server7:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server7
+      - STATUS=200
+    hostname: server7
+    ports:
+      - 7007:5000
+  server8:
+    image: registry.gitlab.com/qio/custom/135803/ansibleflaskapi:latest
+    environment:
+      - SERVER=server8
+      - STATUS=200
+    hostname: server8
+    ports:
+      - 7008:5000

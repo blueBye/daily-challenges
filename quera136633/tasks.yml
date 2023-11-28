@@ -1,0 +1,8 @@
+---
+- name: Cleanup Broken Servers
+  hosts: localhost
+
+# Your defined tasks should be implemented here.
+
+#  tasks:
+#  - name: 
